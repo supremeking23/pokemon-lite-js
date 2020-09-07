@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="pokemon"></div>
+    <script>
+      async function getPokemon(url) {
+        const pokemons = await fetch(url);
+        const pokemon_data = await pokemons.json();
+        return pokemon_data;
+      }
+
+      async function load(getPokemonURL) {
+        let pokemon = await getPokemon(getPokemonURL);
+        //console.log(pokemon);
+
+        return pokemon;
+      }
+
+      async function loadDetail(getPokemonURL) {
+        let detail = await load(getPokemonURL);
+        console.log(
+          `passing id ${detail.sprites.other["official-artwork"].front_default}`
+        );
+        document.querySelector(
+          "#pokemon"
+        ).innerHTML += `<img src="${detail.sprites.other["official-artwork"].front_default}">`;
+      }
+
+      window.onload = (event) => {
+        console.log("page is fully loaded");
+
+        let url = window.location.href;
+        let searchParams = new URLSearchParams(url);
+        let getPokemonURL = searchParams.get(
+          "http://127.0.0.1:5500/pokemon-details.html?pokemon"
+        );
+
+        loadDetail(getPokemonURL);
+      };
+    </script>
+  </body>
+</html>
