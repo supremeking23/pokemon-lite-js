@@ -174,21 +174,21 @@ const loadPokemon = async (data) => {
               class="card-img-top pokemon-img" alt="${capitalize(
                 pokemon.name
               )}" />
-              <div class="d-flex ${
-                type2 ? `justify-content-between` : `justify-content-center`
-              } type-container">
-              
-                <span class="type" style="background: ${bgtype1}">${capitalize(
+                <div class="d-flex ${
+                  type2 ? `justify-content-between` : `justify-content-center`
+                } type-container">
+                
+                  <span class="type" style="background: ${bgtype1}">${capitalize(
         type1
       )}</span>
-                ${
-                  type2
-                    ? `<span class="type " style="background: ${bgtype2}">${capitalize(
-                        type2
-                      )}</span>`
-                    : ""
-                }
-              </div>
+                  ${
+                    type2
+                      ? `<span class="type " style="background: ${bgtype2}">${capitalize(
+                          type2
+                        )}</span>`
+                      : ""
+                  }
+                </div>
               </div>
                 <div class="card-body">
                   <h5 class="card-title text-center">${capitalize(

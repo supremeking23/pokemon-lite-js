@@ -8,43 +8,65 @@
   <body>
     <div id="pokemon"></div>
     <script>
-      async function getPokemon(url) {
-        const pokemons = await fetch(url);
-        const pokemon_data = await pokemons.json();
-        return pokemon_data;
-      }
+      const getAllPokemon = async (url) => {
+        const data = await fetch(url);
+        const json_data = await data.json();
+        return json_data;
+      };
 
-      async function load(getPokemonURL) {
-        let pokemon = await getPokemon(getPokemonURL);
-        //console.log(pokemon);
-        return pokemon;
-      }
+      const getPokemon = async (url) => {
+        const data = await fetch(url);
+        const json_data = await data.json();
+        return json_data;
+      };
 
-      async function loadDetail(getPokemonURL) {
-        let detail = await load(getPokemonURL);
-        console.log(
-          `passing id ${detail.sprites.other["official-artwork"].front_default}`
-        );
+      // async function load(getPokemonURL) {
+      //   let pokemon = await getPokemon(getPokemonURL);
+      //   //console.log(pokemon);
+      //   return pokemon;
+      // }
+
+      const queryString = window.location.search;
+      console.log(queryString);
+      const urlParams = new URLSearchParams(queryString);
+      const pokemonURL = urlParams.get("pokemon");
+      console.log(pokemonURL);
+
+      const fetchData = async () => {
+        let response = await getPokemon(pokemonURL);
+        //console.log(response);
+        await loadDetail(response);
+      };
+
+      const loadDetail = async (data) => {
+        let detail = await data;
+        //console.log(detail);
         document.querySelector(
           "#pokemon"
         ).innerHTML += `<img src="${detail.sprites.other["official-artwork"].front_default}">`;
-      }
+      };
+
+      // async function loadDetail(getPokemonURL) {
+      //   let detail = await getPokemon(getPokemonURL);
+      //   console.log(
+      //     `passing id ${detail.sprites.other["official-artwork"].front_default}`
+      //   );
+      //   document.querySelector(
+      //     "#pokemon"
+      //   ).innerHTML += `<img src="${detail.sprites.other["official-artwork"].front_default}">`;
+      // }
 
       window.onload = (event) => {
         console.log("page is fully loaded");
 
-        let url = window.location.href;
-        let searchParams = new URLSearchParams(url);
-        let getPokemonURL = searchParams.get(
-          "http://127.0.0.1:5500/pokemon-details.html?pokemon"
-        );
+        // let url = window.location.href;
+        // let searchParams = new URLSearchParams(url);
+        // let getPokemonURL = searchParams.get(
+        //   "http://127.0.0.1:5500/pokemon-details.html?pokemon"
+        // );
 
-        const queryString = window.location.search;
-        console.log(queryString);
-        const urlParams = new URLSearchParams(queryString);
-        const pokemonURL = urlParams.get("pokemon");
-        console.log(pokemonURL);
-        loadDetail(pokemonURL);
+        fetchData();
+        //loadDetail(pokemonURL);
       };
     </script>
   </body>
