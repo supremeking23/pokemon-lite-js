@@ -17,7 +17,6 @@
       async function load(getPokemonURL) {
         let pokemon = await getPokemon(getPokemonURL);
         //console.log(pokemon);
-
         return pokemon;
       }
 
@@ -40,7 +39,12 @@
           "http://127.0.0.1:5500/pokemon-details.html?pokemon"
         );
 
-        loadDetail(getPokemonURL);
+        const queryString = window.location.search;
+        console.log(queryString);
+        const urlParams = new URLSearchParams(queryString);
+        const pokemonURL = urlParams.get("pokemon");
+        console.log(pokemonURL);
+        loadDetail(pokemonURL);
       };
     </script>
   </body>

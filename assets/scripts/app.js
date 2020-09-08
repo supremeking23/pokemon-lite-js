@@ -1,13 +1,47 @@
-function capitalize(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
 const pokemonList = document.querySelector(".pokemon-list");
+// const pokemonData;
+let nextUrl = null;
+let prevUrl = null;
+const initialURL = `https://pokeapi.co/api/v2/pokemon`;
+
+const getAllPokemon = async (url) => {
+  const data = await fetch(url);
+  const json_data = await data.json();
+  return json_data;
+};
+
+//useeffect
+const fetchData = async () => {
+  let response = await getAllPokemon(initialURL);
+  //console.log(response);
+  nextUrl = response.next;
+  prevUrl = response.previous;
+  //console.log(nextUrl);
+  await loadPokemon(response.results);
+};
+//outside useeffect
+
+const next = async () => {
+  let data = await getAllPokemon(nextUrl);
+  nextUrl = data.next;
+  prevUrl = data.previous;
+  await loadPokemon(data.results);
+};
+
+const prev = async () => {
+  let data = await getAllPokemon(prevUrl);
+  nextUrl = data.next;
+  if (prevUrl) {
+    prevUrl = data.previous;
+  } else {
+    console.log(prevUrl);
+  }
+  await loadPokemon(data.results);
+};
 
 async function loadImage(url) {
   const pokemon = await fetch(url);
   const pokemon_data = await pokemon.json();
-
   return pokemon_data.sprites.other["official-artwork"].front_default;
 }
 
@@ -21,18 +55,15 @@ const getType = async (url) => {
   );
 };
 
-//console.log(getType(`https://pokeapi.co/api/v2/pokemon/2/`));
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
 
-async function getAllPokemon() {
-  //https://pokeapi.co/api/v2/pokemon?limit=200&offset=500
-  //
-  const pokemons = await fetch(
-    `https://pokeapi.co/api/v2/pokemon?limit=200&offset=500`
-  );
-  const pokemon_data = await pokemons.json();
+const loadPokemon = async (data) => {
+  let pokemons = await data;
 
   let lists = await Promise.all(
-    pokemon_data.results.map(async (pokemon) => {
+    pokemons.map(async (pokemon) => {
       let image = await loadImage(pokemon.url);
       let [type1, type2] = await getType(pokemon.url);
       let bg = "";
@@ -177,6 +208,28 @@ async function getAllPokemon() {
   );
 
   pokemonList.innerHTML = lists.join("");
-}
+};
 
-getAllPokemon();
+fetchData();
+
+document.querySelector(".next").addEventListener("click", next);
+document.querySelector(".prev").addEventListener("click", prev);
+// const nextDataHandler = (next) => {
+//   return next;
+// };
+
+// const outPut = async (url) => {
+//   let alldata = await fetchData(url);
+//   let results = alldata.results;
+//   nextDataHandler(alldata.next);
+
+//   // moveToNext(next);
+//   console.log(results);
+// };
+
+// const moveToNext = async (next) => {
+//   console.log(nextDataHandler("ivan"));
+// };
+
+// outPut(`https://pokeapi.co/api/v2/pokemon`);
+// document.querySelector(".next").addEventListener("click", moveToNext);
