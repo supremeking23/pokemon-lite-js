@@ -1,3 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans&family=Fira+Sans+Extra+Condensed&display=swap");
+
+/* font-family: 'Fira Sans', sans-serif;
+font-family: 'Fira Sans Extra Condensed', sans-serif; */
 :root {
   --red-primary: #f44336;
   --text-color-primary: #ffffff;
@@ -10,9 +14,29 @@
   margin: 0;
 }
 
+body {
+  background-color: #ffffff;
+  background-image: url("https://www.transparenttextures.com/patterns/gplay.png");
+}
+
 .bg-nav {
   background: var(--red-primary);
   color: var(--text-color-primary) !important;
+}
+
+a,
+p,
+button {
+  font-family: "Fira Sans", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Fira Sans Extra Condensed", sans-serif;
 }
 
 /*  custom nav style */
@@ -110,4 +134,14 @@
   margin: 20px 0;
   height: 80px;
   padding: 20px 0;
+}
+
+.btn-throw-pokeball {
+  background: var(--red-primary) !important;
+  border: var(--red-primary) !important;
+}
+
+.btn-throw-pokeball:hover {
+  background: var(--firetype) !important;
+  border: var(--firetype) !important;
 }

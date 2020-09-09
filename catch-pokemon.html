@@ -15,13 +15,13 @@
     />
 
     <link rel="stylesheet" href="assets/styles/styles.css" />
-
+    <link rel="stylesheet" href="assets/styles/ripple.min.css" />
     <title>Pokemon Lite</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-nav">
       <div class="container">
-        <a class="navbar-brand" href="#">Pokemon-lite</a>
+        <a class="navbar-brand" href="index.html">Pokemon-lite</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -57,7 +57,6 @@
         </div>
         <div
           class="row row-cols-1 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 d-flex justify-content-center random-pokemon"
-          style="background"
         >
           <!--insert data here-->
           <!-- <div class="col mb-4">
@@ -73,14 +72,17 @@
 
         <div class="row">
           <div class="col col-12 col-lg-6 col-md-6 mb-2">
-            <button type="button" class="btn btn-primary btn-lg btn-block">
+            <button
+              type="button"
+              class="btn btn-throw-pokeball btn-danger btn-lg btn-block ripple"
+            >
               Throw Pokeball
             </button>
           </div>
           <div class="col col-12 col-lg-6 col-md-6">
             <button
               type="button"
-              class="btn btn-primary btn-lg btn-block another-pokemon"
+              class="btn btn-warning btn-lg btn-block another-pokemon ripple"
             >
               Catch Another Pokemon
             </button>
@@ -92,6 +94,11 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/lodash@4/lodash.min.js"></script>
+    <script src="https://unpkg.com/lowdb@0.17/dist/low.min.js"></script>
+    <script src="https://unpkg.com/lowdb@0.17/dist/LocalStorage.min.js"></script>
+    <script></script>
+
     <script src="./assets/scripts/catch-pokemon.js"></script>
   </body>
 </html>

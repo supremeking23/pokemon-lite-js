@@ -1,8 +1,29 @@
-console.log("catch");
 // https://codepen.io/jocchann/pen/MyxedP
+
+// DOM Variables
 const randomPokemon = document.querySelector(".random-pokemon");
 const wildPokemonName = document.querySelector(".wild-pokemon-name");
 const anotherPokemon = document.querySelector(".another-pokemon");
+const catchPokemon = document.querySelector(".btn-throw-pokeball");
+
+//variables
+let randomPokemonData;
+const caughtPokemon = [];
+
+//lowDB
+
+let adapter = new LocalStorage("db");
+let db = low(adapter);
+// db.set("pokemon", caughtPokemon).write();
+//set defaults
+db.defaults({ pokemons: [] }).write();
+
+// let allcaught = db.read();
+//allcaught.__wrapped__.pokemon[2]
+// let size = db.get("pokemon").size().value();
+// console.log(size);
+
+////////////////FUNCTIONS
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
@@ -45,7 +66,7 @@ const randomPokemonAppear = async (response) => {
   let allPokemonCount = data.count;
   let generateRandom = generateRandomFunction(allPokemonCount);
   let randomPokemonURL = `https://pokeapi.co/api/v2/pokemon/${generateRandom}`;
-  let randomPokemonData = await getPokemonDetail(randomPokemonURL);
+  randomPokemonData = await getPokemonDetail(randomPokemonURL);
   //   console.log(generateRandom);
   //   console.log(randomPokemonData);
   let [type1, type2] = await getType(randomPokemonURL);
@@ -149,6 +170,9 @@ const randomPokemonAppear = async (response) => {
     bgtype2 = "#F1A9F1";
   }
 
+  // buttonAnotherPokemon.style.background = bg;
+  // buttonAnotherPokemon.style.color = "#FFFFFF";
+
   wildPokemonName.innerHTML = `A wild ${capitalize(
     randomPokemonData.name
   )} appear !`;
@@ -156,7 +180,7 @@ const randomPokemonAppear = async (response) => {
   let appearPokemon = `
   <div class="col mb-4">
   <div class="card">
-    <div id="poke-container" class="d-flex flex-column align-items-center justify-content-center pokemon-img-container " style="background:${bg}">
+    <div id="poke-container" class="d-flex flex-column align-items-center justify-content-center pokemon-img-container ripple" style="background:${bg}">
         <img src="${randomPokemonData.sprites.other["official-artwork"].front_default}" class="card-img-top" alt="${randomPokemonData.name}" />
         
 
@@ -168,13 +192,32 @@ const randomPokemonAppear = async (response) => {
 </div>
   `;
   randomPokemon.innerHTML = appearPokemon;
+
+  console.log(caughtPokemon);
 };
 
 fetchData();
 
+catchPokemon.addEventListener("click", function (e) {
+  console.log("caught");
+  // console.log(randomPokemonData.id);
+
+  db.get("pokemons").push(randomPokemonData).write();
+  setTimeout(function () {
+    console.log("congrats");
+    fetchData();
+  }, 3000);
+});
+
 anotherPokemon.addEventListener("click", function () {
   fetchData();
 });
+
+// setInterval(() => {
+//   // Do something every 5 seconds
+//   console.log("change pokemon");
+//   fetchData();
+// }, 1000 * 5);
 
 {
   /* <div class="card-body">

@@ -168,7 +168,7 @@ const loadPokemon = async (data) => {
       let data = `
               <div class="col mb-4">
               <div class="card">
-              <div id="poke-container" class="d-flex flex-column align-items-center justify-content-center pokemon-img-container " style="background:${bg}">
+              <div id="poke-container" class="d-flex flex-column align-items-center justify-content-center pokemon-img-container ripple" style="background:${bg}">
     
               <img src="${image}"
               class="card-img-top pokemon-img" alt="${capitalize(
