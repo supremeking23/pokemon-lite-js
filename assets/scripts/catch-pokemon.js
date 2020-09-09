@@ -198,19 +198,53 @@ const randomPokemonAppear = async (response) => {
 
 fetchData();
 
-catchPokemon.addEventListener("click", function (e) {
-  console.log("caught");
-  // console.log(randomPokemonData.id);
-  const wildPokemonAppear = document.querySelector(".wild-pokemon-appear");
-  wildPokemonAppear.style.animation = "pokemon-disappear 0.5s ease 1";
-  wildPokemonAppear.style.animationDelay = "1s";
-  wildPokemonAppear.style.animationFillMode = "forwards";
-  // db.get("pokemons").push(randomPokemonData).write();
-  // setTimeout(function () {
-  //   console.log("congrats");
-  //   fetchData();
-  // }, 3000);
-});
+catchPokemon.addEventListener(
+  "click",
+  function (e) {
+    console.log("caught");
+
+    // var star = document.querySelector(".star1");
+    // var successMessage = document.querySelector(".success");
+    // var gotchaMessage = document.querySelector(".gotcha");
+
+    const throwMessage = document.querySelector(".throw");
+    throwMessage.style.animation = "throwMessage 1s 1 steps(21, start)";
+    //steps(21, start)
+    throwMessage.style.animationFillMode = "forwards";
+
+    const pokeballItem = document.querySelector(".pokeball");
+
+    pokeballItem.style.opacity = "1";
+
+    // pokeballItem.style.animation = "throwPokeballMovement 3s ";
+    pokeballItem.classList.add("animate__fadeInUp");
+
+    // pokeballItem.style.opacity = "0";
+
+    // pokeballItem.style.opacity = "-5";
+    // console.log(randomPokemonData.id);
+    const wildPokemonAppear = document.querySelector(".wild-pokemon-appear");
+    wildPokemonAppear.style.animation = "pokemon-disappear 0.5s ease 1";
+    wildPokemonAppear.style.animationDelay = "1s";
+    wildPokemonAppear.style.animationFillMode = "forwards";
+
+    setTimeout(() => {
+      console.log("first set timeout");
+
+      setTimeout(function () {
+        pokeballItem.style.display = "none";
+        // pokeballItem.setAttribute("src", "./assets/images/Pokeball.png");
+        // pokeballItem.setAttribute("src", "./assets/images/pokeballOne.png");
+
+        // console.log("congrats");
+        db.get("pokemons").push(randomPokemonData).write();
+        fetchData();
+        //location.reload();
+      }, 6000);
+    });
+  },
+  3000
+);
 
 anotherPokemon.addEventListener("click", function () {
   fetchData();
