@@ -1,3 +1,23 @@
+let adapter = new LocalStorage("db");
+let db = low(adapter);
+
+const yourPokemon = [...db.get("pokemons").value()];
+let yourPokemonIds = yourPokemon.map((yourpokemon) => {
+  return yourpokemon.id;
+});
+
+// console.log(yourPokemonIds);
+
+const checkYourPokemon = (pokemonId) => {
+  return yourPokemonIds.includes(pokemonId.id);
+};
+console.log(yourPokemon);
+
+yourPokemon.forEach((pokemon) => {
+  console.log(pokemon.name);
+});
+
+//console.log(yourPokemon[1]);
 const pokemonList = document.querySelector(".pokemon-list");
 // const pokemonData;
 let nextUrl = null;
@@ -55,6 +75,12 @@ const getType = async (url) => {
   );
 };
 
+const getFullDataOfPokemon = async (url) => {
+  const pokemon = await fetch(url);
+  const pokemon_data = await pokemon.json();
+  return pokemon_data;
+};
+
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
@@ -64,6 +90,10 @@ const loadPokemon = async (data) => {
 
   let lists = await Promise.all(
     pokemons.map(async (pokemon) => {
+      let pokemonAdditonalData = await getFullDataOfPokemon(pokemon.url);
+      let hasPokemon = checkYourPokemon(pokemonAdditonalData);
+      console.log(hasPokemon);
+      //console.log(pokemonAdditonalData);
       let image = await loadImage(pokemon.url);
       let [type1, type2] = await getType(pokemon.url);
       let bg = "";
@@ -169,7 +199,11 @@ const loadPokemon = async (data) => {
               <div class="col mb-4">
               <div class="card">
               <div id="poke-container" class="d-flex flex-column align-items-center justify-content-center pokemon-img-container ripple" style="background:${bg}">
-    
+              ${
+                hasPokemon
+                  ? '<div class="pokeball-is-caught d-flex justify-content-end" style=""><img class="isCaught mr-1" src="./assets/images/pokeball.png" ></div>'
+                  : ""
+              }
               <img src="${image}"
               class="card-img-top pokemon-img" alt="${capitalize(
                 pokemon.name
@@ -191,9 +225,12 @@ const loadPokemon = async (data) => {
                 </div>
               </div>
                 <div class="card-body">
-                  <h5 class="card-title text-center">${capitalize(
+                  <h6 class="lead text-center">#${pokemonAdditonalData.id
+                    .toString()
+                    .padStart(3, "0")}</h6>
+                  <h4 class="card-title text-center">${capitalize(
                     pokemon.name
-                  )}</h5>
+                  )}</h4>
                   <p class="card-text text-center">
                    <a href="pokemon-details.html?pokemon=${
                      pokemon.url
@@ -214,6 +251,7 @@ fetchData();
 
 document.querySelector(".next").addEventListener("click", next);
 document.querySelector(".prev").addEventListener("click", prev);
+
 // const nextDataHandler = (next) => {
 //   return next;
 // };

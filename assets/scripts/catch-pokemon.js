@@ -181,7 +181,7 @@ const randomPokemonAppear = async (response) => {
   <div class="col mb-4">
   <div class="card">
     <div id="poke-container" class="d-flex flex-column align-items-center justify-content-center pokemon-img-container ripple" style="background:${bg}">
-        <img src="${randomPokemonData.sprites.other["official-artwork"].front_default}" class="card-img-top" alt="${randomPokemonData.name}" />
+        <img src="${randomPokemonData.sprites.other["official-artwork"].front_default}" class="card-img-top wild-pokemon-appear" alt="${randomPokemonData.name}" />
         
 
     </div>
@@ -201,12 +201,15 @@ fetchData();
 catchPokemon.addEventListener("click", function (e) {
   console.log("caught");
   // console.log(randomPokemonData.id);
-
-  db.get("pokemons").push(randomPokemonData).write();
-  setTimeout(function () {
-    console.log("congrats");
-    fetchData();
-  }, 3000);
+  const wildPokemonAppear = document.querySelector(".wild-pokemon-appear");
+  wildPokemonAppear.style.animation = "pokemon-disappear 0.5s ease 1";
+  wildPokemonAppear.style.animationDelay = "1s";
+  wildPokemonAppear.style.animationFillMode = "forwards";
+  // db.get("pokemons").push(randomPokemonData).write();
+  // setTimeout(function () {
+  //   console.log("congrats");
+  //   fetchData();
+  // }, 3000);
 });
 
 anotherPokemon.addEventListener("click", function () {

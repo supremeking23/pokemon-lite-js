@@ -77,11 +77,6 @@ h6 {
   box-shadow: 20px 20px 61px #4159c9, -20px -20ox 61px #6389ff;
 } */
 
-.pokemon-img-container {
-  /* background: #8cd750; */
-  padding-bottom: 4px;
-}
-
 /* .card {
   position: relative;
 }
@@ -105,6 +100,11 @@ h6 {
   width: 100%;
   height: 100px;
 } */
+
+.card {
+  box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
+  border-radius: 20px;
+}
 
 .pokemon-img {
   width: 200px;
@@ -136,6 +136,9 @@ h6 {
   padding: 20px 0;
 }
 
+.wild-pokemon-appear {
+}
+
 .btn-throw-pokeball {
   background: var(--red-primary) !important;
   border: var(--red-primary) !important;
@@ -144,4 +147,250 @@ h6 {
 .btn-throw-pokeball:hover {
   background: var(--firetype) !important;
   border: var(--firetype) !important;
+}
+
+.pokemon-img-container {
+  /* background: #8cd750; */
+
+  /*width: 200px; */
+  width: 100%;
+  height: 300px;
+  /* background: red !important; */
+}
+
+.pokemon-img {
+  width: 200px;
+  /* padding-bottom: 10px; */
+}
+
+.pokeball-is-caught {
+  margin-left: 5px;
+  position: relative;
+  width: 100%;
+  text-align: center;
+  z-index: -1;
+}
+
+.isCaught {
+  width: 400px;
+  left: 9px;
+  position: absolute;
+  margin: auto;
+  top: 40px;
+  /* transform: rotateY(-5deg); */
+}
+
+/* catch pokemon animation */
+@keyframes pokemon-disappear {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes throw-ball {
+  0% {
+    top: 150%;
+    left: 20%;
+    transform: scale(0.5);
+  }
+  35% {
+    top: 40%;
+    left: 41%;
+    transform: scale(1.2);
+  }
+  40% {
+    top: 37%;
+    left: 42%;
+    transform: scale(1.3);
+  }
+  42.5% {
+    top: 38.5%;
+    left: 42.5%;
+    transform: scale(1.3);
+  }
+  85% {
+    top: 38.5%;
+    left: 42.5%;
+    transform: scale(1.3);
+  }
+  100% {
+    top: 50%;
+    left: 47.2%;
+    transform: scale(1);
+  }
+}
+@keyframes wiggle {
+  0% {
+    transform: rotate(0);
+  }
+  10% {
+    transform: rotate(-15deg);
+  }
+  20% {
+    transform: rotate(15deg);
+  }
+  30% {
+    transform: rotate(-15deg);
+  }
+  50% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+@keyframes catch {
+  0% {
+    background: rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    background: rgba(0, 0, 0, 0.7);
+  }
+}
+@keyframes star1 {
+  0% {
+    top: 0;
+    left: 0;
+    opacity: 1;
+    transform: rotate(0);
+  }
+  40% {
+    top: -70px;
+    left: -30px;
+    opacity: 1;
+    transform: scale(1);
+  }
+  80% {
+    top: -50px;
+    left: -50px;
+    opacity: 1;
+    transform: rotate(-45deg) scale(1.2);
+  }
+  100% {
+    top: -50px;
+    left: -50px;
+    opacity: 0;
+    transform: rotate(-60deg) scale(1);
+  }
+}
+@keyframes star2 {
+  0% {
+    top: 0;
+    opacity: 1;
+  }
+  40% {
+    top: -90px;
+    opacity: 1;
+    transform: scale(1);
+  }
+  80% {
+    top: -70px;
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    top: -70px;
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+@keyframes star3 {
+  0% {
+    top: 0;
+    opacity: 1;
+    transform: rotate(0);
+  }
+  40% {
+    top: -70px;
+    left: calc(70% + 30px);
+    opacity: 1;
+    transform: scale(1);
+  }
+  80% {
+    top: -50px;
+    left: calc(70% + 50px);
+    opacity: 1;
+    transform: rotate(45deg) scale(1.2);
+  }
+  100% {
+    top: -50px;
+    left: calc(70% + 50px);
+    opacity: 0;
+    transform: rotate(60deg) scale(1);
+  }
+}
+@keyframes successMessage {
+  from {
+    opacity: 1;
+    width: 0;
+  }
+  to {
+    opacity: 1;
+    width: 500px;
+  }
+}
+@keyframes gotchaMessage {
+  from {
+    opacity: 1;
+    width: 0;
+  }
+  to {
+    opacity: 1;
+    width: 160px;
+  }
+}
+@keyframes throwMessage {
+  from {
+    opacity: 1;
+    width: 0;
+  }
+  to {
+    opacity: 1;
+    width: 510px;
+  }
+}
+
+.textbox {
+  position: fixed;
+  width: 90%;
+}
+.textbox-text,
+.throw,
+.gotcha,
+.success {
+  margin-left: 5%;
+  overflow: hidden;
+  white-space: nowrap;
+  /* letter-spacing: 5px; */
+  /* opacity: 0; */
+}
+
+/* For mobile phones: */
+/* @media only screen and (max-width: 768px) {
+  .isCaught {
+    right: 135px;
+  }
+} */
+
+/* // Small devices (landscape phones, 576px and below) */
+@media (max-width: 576px) {
+  .isCaught {
+    position: fixed;
+    right: -52px;
+  }
+
+  .textbox {
+    position: relative;
+  }
+}
+/* 
+// Medium devices (tablets, 768px and below) */
+@media (max-width: 768px) {
+  .textbox {
+    position: relative;
+    text-align: center;
+  }
 }
