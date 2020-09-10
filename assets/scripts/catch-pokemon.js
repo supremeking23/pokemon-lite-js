@@ -9,6 +9,7 @@ const catchPokemon = document.querySelector(".btn-throw-pokeball");
 //variables
 let randomPokemonData;
 const caughtPokemon = [];
+let currentPokemon = "";
 
 //lowDB
 
@@ -21,7 +22,6 @@ db.defaults({ pokemons: [] }).write();
 // let allcaught = db.read();
 //allcaught.__wrapped__.pokemon[2]
 // let size = db.get("pokemon").size().value();
-// console.log(size);
 
 ////////////////FUNCTIONS
 function capitalize(str) {
@@ -48,7 +48,8 @@ const fetchData = async () => {
 };
 
 const generateRandomFunction = (allPokemonCount) => {
-  return Math.floor(Math.random() * allPokemonCount);
+  let pokemonCountForPresentation = 900;
+  return Math.floor(Math.random() * pokemonCountForPresentation); // allPokemonCount
 };
 
 const getType = async (url) => {
@@ -67,9 +68,11 @@ const randomPokemonAppear = async (response) => {
   let generateRandom = generateRandomFunction(allPokemonCount);
   let randomPokemonURL = `https://pokeapi.co/api/v2/pokemon/${generateRandom}`;
   randomPokemonData = await getPokemonDetail(randomPokemonURL);
-  //   console.log(generateRandom);
-  //   console.log(randomPokemonData);
+
   let [type1, type2] = await getType(randomPokemonURL);
+
+  caughtPokemon.push(randomPokemonData.name);
+  currentPokemon = randomPokemonData.name;
 
   let bg = "";
   let bgtype1 = "";
@@ -181,7 +184,13 @@ const randomPokemonAppear = async (response) => {
   <div class="col mb-4">
   <div class="card">
     <div id="poke-container" class="d-flex flex-column align-items-center justify-content-center pokemon-img-container ripple" style="background:${bg}">
-        <img src="${randomPokemonData.sprites.other["official-artwork"].front_default}" class="card-img-top wild-pokemon-appear" alt="${randomPokemonData.name}" />
+        <img src="${
+          randomPokemonData.sprites.other["official-artwork"].front_default
+            ? randomPokemonData.sprites.other["official-artwork"].front_default
+            : "./assets/images/no-image.png"
+        }" class="card-img-top wild-pokemon-appear" alt="${
+    randomPokemonData.name
+  }" />
         
 
     </div>
@@ -192,90 +201,97 @@ const randomPokemonAppear = async (response) => {
 </div>
   `;
   randomPokemon.innerHTML = appearPokemon;
-
-  console.log(caughtPokemon);
 };
 
-fetchData();
+const pokeballItem = document.querySelector(".pokeball");
+const throwMessage = document.querySelector(".throw");
+const gotchaMessage = document.querySelector(".gotcha");
+const successMessage = document.querySelector(".success");
+// pokeballItem.classList.add("hideInit");
 
-catchPokemon.addEventListener(
-  "click",
-  function (e) {
-    console.log("caught");
+catchPokemon.addEventListener("click", function (e) {
+  console.log("Throw Pokeball");
 
-    // var star = document.querySelector(".star1");
-    // var successMessage = document.querySelector(".success");
-    // var gotchaMessage = document.querySelector(".gotcha");
+  // var star = document.querySelector(".star1");
+  // var successMessage = document.querySelector(".success");
+  // var gotchaMessage = document.querySelector(".gotcha");
 
-    const throwMessage = document.querySelector(".throw");
-    throwMessage.style.animation = "throwMessage 1s 1 steps(21, start)";
-    //steps(21, start)
-    throwMessage.style.animationFillMode = "forwards";
+  throwMessage.style.animation = "throwMessage 1s 1 steps(21, start)";
 
-    const pokeballItem = document.querySelector(".pokeball");
+  throwMessage.style.animationFillMode = "forwards";
 
-    pokeballItem.style.opacity = "1";
+  // pokeballItem.style.opacity = "1";
+  // pokeballItem.style.animationDelay = "1s";
 
-    // pokeballItem.style.animation = "throwPokeballMovement 3s ";
-    pokeballItem.classList.add("animate__fadeInUp");
+  // pokeballItem.style.animation = "throwPokeballMovement 3s ";
 
-    // pokeballItem.style.opacity = "0";
+  pokeballItem.classList.remove("hideInit");
+  pokeballItem.classList.add("show");
+  pokeballItem.classList.add("animate__fadeInUp");
 
-    // pokeballItem.style.opacity = "-5";
-    // console.log(randomPokemonData.id);
-    const wildPokemonAppear = document.querySelector(".wild-pokemon-appear");
-    wildPokemonAppear.style.animation = "pokemon-disappear 0.5s ease 1";
-    wildPokemonAppear.style.animationDelay = "1s";
-    wildPokemonAppear.style.animationFillMode = "forwards";
+  // pokeballItem.style.opacity = "0";
 
-    setTimeout(() => {
-      console.log("first set timeout");
+  // pokeballItem.style.opacity = "-5";
 
-      setTimeout(function () {
-        pokeballItem.style.display = "none";
-        // pokeballItem.setAttribute("src", "./assets/images/Pokeball.png");
-        // pokeballItem.setAttribute("src", "./assets/images/pokeballOne.png");
+  const wildPokemonAppear = document.querySelector(".wild-pokemon-appear");
+  wildPokemonAppear.style.animation = "pokemon-disappear 0.5s ease 1";
+  wildPokemonAppear.style.animationDelay = "1s";
+  wildPokemonAppear.style.animationFillMode = "forwards";
 
-        // console.log("congrats");
-        db.get("pokemons").push(randomPokemonData).write();
-        fetchData();
-        //location.reload();
-      }, 6000);
-    });
-  },
-  3000
-);
+  setTimeout(() => {
+    console.log("Change Open pokeball from open to close, add wiggle effect");
+    catchPokemon.classList.add("disabled");
+    anotherPokemon.classList.add("disabled");
+    //pokeballItem.style.opacity = "0";
+
+    pokeballItem.style.animation = "wiggle .5s ease 5";
+    pokeballItem.style.animationDelay = "1s";
+    pokeballItem.setAttribute("src", "./assets/images/pokeballOne.png");
+    // pokeballItem.classList.remove("show");
+    // pokeballItem.classList.remove("animate__fadeInUp");
+    // pokeballItem.classList.add("hide");
+  }, 1000 * 2); // Do the following after 2sec
+
+  setTimeout(() => {
+    //pokeballItem.style.opacity = "0";
+    // pokeballItem.setAttribute("src", "./assets/images/Pokeball.png");
+    gotchaMessage.style.animation = "gotchaMessage 0.5s ease 1";
+    gotchaMessage.style.animationDelay = "1s";
+    gotchaMessage.style.animationFillMode = "forwards";
+    successMessage.innerHTML += `${capitalize(currentPokemon)} was caught!`;
+    successMessage.style.animation = "successMessage 0.5s ease 1";
+    successMessage.style.animationFillMode = "forwards";
+    successMessage.style.animationDelay = "2s";
+    pokeballItem.classList.remove("show");
+    pokeballItem.classList.add("hide");
+    console.log("Gotcha Message and store to lowDB");
+    db.get("pokemons").push(randomPokemonData).write();
+    var gotchaSound = new Audio("./assets/sounds/gotcha.mp3");
+    gotchaSound.play();
+  }, 1000 * 5); // Do the following after 5 sec; 3sec difference from the last setTimeout Function
+
+  setTimeout(() => {
+    //pokeballItem.style.opacity = "0";
+    location.reload();
+  }, 1000 * 12); //Do the following after 12 sec; 7sec difference from the last setTimeout Function and 2 sec difference from the first timout
+});
 
 anotherPokemon.addEventListener("click", function () {
   fetchData();
 });
 
+fetchData(); //Initial Load
+
+//load your pokemon here
+const yourPokemon = [...db.get("pokemons").value()];
+let yourPokemonmap = yourPokemon.map((yourpokemon) => {
+  return yourpokemon;
+});
+
+console.log(yourPokemonmap);
+
 // setInterval(() => {
 //   // Do something every 5 seconds
-//   console.log("change pokemon");
+
 //   fetchData();
 // }, 1000 * 5);
-
-{
-  /* <div class="card-body">
-<h5 class="card-title text-center"> ${capitalize(
-  randomPokemonData.name
-)}</h5>
-</div> */
-}
-
-// <div class="d-flex ${
-//     type2 ? `justify-content-between` : `justify-content-center`
-//   } type-container">
-
-//       <span class="type" style="background: ${bgtype1}">${capitalize(
-// type1
-// )}</span>
-//       ${
-//         type2
-//           ? `<span class="type " style="background: ${bgtype2}">${capitalize(
-//               type2
-//             )}</span>`
-//           : ""
-//       }
-//   </div>

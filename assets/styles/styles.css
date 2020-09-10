@@ -242,15 +242,15 @@ h6 {
     transform: rotate(0);
   }
 }
-@keyframes catch {
+/* @keyframes catch {
   0% {
     background: rgba(0, 0, 0, 0.2);
   }
   100% {
     background: rgba(0, 0, 0, 0.7);
   }
-}
-@keyframes star1 {
+} */
+/* @keyframes star1 {
   0% {
     top: 0;
     left: 0;
@@ -321,7 +321,7 @@ h6 {
     opacity: 0;
     transform: rotate(60deg) scale(1);
   }
-}
+} */
 @keyframes successMessage {
   from {
     opacity: 1;
@@ -329,7 +329,8 @@ h6 {
   }
   to {
     opacity: 1;
-    width: 500px;
+    width: 310px;
+    /* 500 */
   }
 }
 @keyframes gotchaMessage {
@@ -339,7 +340,8 @@ h6 {
   }
   to {
     opacity: 1;
-    width: 160px;
+    width: 310px;
+    /* 160 */
   }
 }
 @keyframes throwMessage {
@@ -350,14 +352,15 @@ h6 {
   to {
     opacity: 1;
     width: 310px;
+    /* 310 */
   }
 }
 
-.textbox {
+.textbox-message {
   position: fixed;
   width: 90%;
 }
-.textbox-text,
+/* .textbox-text, */
 .throw,
 .gotcha,
 .success {
@@ -371,8 +374,23 @@ h6 {
 .pokeball {
   width: 200px;
   position: absolute;
-  top: -190px;
+  top: -230px;
+  /* opacity: 0; */
+}
+
+.show {
+  opacity: 1;
+  transition: opacity 1000ms;
+}
+
+.hide {
   opacity: 0;
+  transition: opacity 1000ms;
+}
+
+.hideInit {
+  opacity: 0;
+  /* transition: opacity 1000ms; */
 }
 
 /* .nanjan {
@@ -380,7 +398,7 @@ h6 {
 } */
 
 /* hindi nagamit */
-@keyframes throwPokeballMovement {
+/* @keyframes throwPokeballMovement {
   from {
     opacity: 1;
     bottom: 0;
@@ -389,7 +407,7 @@ h6 {
     opacity: 0;
     bottom: 10px;
   }
-}
+} */
 
 /* .top {
   background-color: red;
@@ -483,14 +501,14 @@ h6 {
     right: -52px;
   }
 
-  .textbox {
+  .textbox-message {
     position: relative;
   }
 }
 /* 
 // Medium devices (tablets, 768px and below) */
 @media (max-width: 768px) {
-  .textbox {
+  .textbox-message {
     position: relative;
     text-align: center;
   }
