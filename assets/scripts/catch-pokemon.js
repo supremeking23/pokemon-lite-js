@@ -251,7 +251,7 @@ catchPokemon.addEventListener("click", function (e) {
 
   setTimeout(() => {
     //pokeballItem.style.opacity = "0";
-    // pokeballItem.setAttribute("src", "./assets/images/pokeball.png");
+    // pokeballItem.setAttribute("src", "./assets/images/pokeball-open.png");
     gotchaMessage.style.animation = "gotchaMessage 0.5s ease 1";
     gotchaMessage.style.animationDelay = "1s";
     gotchaMessage.style.animationFillMode = "forwards";
