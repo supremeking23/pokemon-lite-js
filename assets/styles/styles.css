@@ -132,7 +132,7 @@ h6 {
 /* catch-pokemon page */
 .wild-pokemon-section {
   margin: 20px 0;
-  height: 80px;
+  /* height: 80px; */
   padding: 20px 0;
 }
 
@@ -177,7 +177,6 @@ h6 {
   position: absolute;
   margin: auto;
   top: 40px;
-  /* transform: rotateY(-5deg); */
 }
 
 /* catch pokemon animation */
@@ -392,100 +391,6 @@ h6 {
   opacity: 0;
   /* transition: opacity 1000ms; */
 }
-
-/* .nanjan {
-  opacity: 0;
-} */
-
-/* hindi nagamit */
-/* @keyframes throwPokeballMovement {
-  from {
-    opacity: 1;
-    bottom: 0;
-  }
-  to {
-    opacity: 0;
-    bottom: 10px;
-  }
-} */
-
-/* .top {
-  background-color: red;
-  width: 90px;
-  height: 43px;
-  border-radius: 45px 45px 0 0;
-  position: absolute;
-  top: 5px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-.bottom {
-  background-color: white;
-  width: 90px;
-  height: 43px;
-  border-radius: 0 0 45px 45px;
-  position: absolute;
-  bottom: 5px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-.centre-black {
-  width: 40px;
-  height: 40px;
-  background: black;
-  position: absolute;
-  border-radius: 50%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-}
-.centre-white {
-  width: 30px;
-  height: 30px;
-  background: white;
-  position: absolute;
-  border-radius: 50%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-}
-
-.star {
-  z-index: 4;
-  width: 40px;
-  height: 40px;
-  position: absolute;
-}
-.star1 {
-  opacity: 0;
-  left: 0;
-}
-.star2 {
-  opacity: 0;
-  left: 33%;
-}
-.star3 {
-  opacity: 0;
-  left: 70%;
-} */
-
-/* .throw {
-  width: 510px;
-}
-.gotcha {
-  width: 160px;
-}
-.success {
-  width: 450px;
-}
-.textbox {
-  border: 5px solid black;
-  border-radius: 5px;
-  margin: 2% 5%;
-  height: 130px;
-} */
 
 /* For mobile phones: */
 /* @media only screen and (max-width: 768px) {
