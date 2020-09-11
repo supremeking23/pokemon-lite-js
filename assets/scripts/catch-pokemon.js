@@ -48,7 +48,7 @@ const fetchData = async () => {
 };
 
 const generateRandomFunction = (allPokemonCount) => {
-  let pokemonCountForPresentation = 900;
+  let pokemonCountForPresentation = 30; // 900
   return Math.floor(Math.random() * pokemonCountForPresentation); // allPokemonCount
 };
 

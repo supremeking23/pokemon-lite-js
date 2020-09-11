@@ -26,7 +26,9 @@ body {
 
 a,
 p,
-button {
+button,
+th,
+td {
   font-family: "Fira Sans", sans-serif;
 }
 
