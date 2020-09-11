@@ -183,7 +183,7 @@ const randomPokemonAppear = async (response) => {
   let appearPokemon = `
   <div class="col mb-4">
   <div class="card">
-    <div id="poke-container" class="d-flex flex-column align-items-center justify-content-center pokemon-img-container ripple" style="background:${bg}">
+    <div id="poke-container" class="d-flex flex-column align-items-center justify-content-center pokemon-img-container ripple" style="background:${bg};border-radius:20px;">
         <img src="${
           randomPokemonData.sprites.other["official-artwork"].front_default
             ? randomPokemonData.sprites.other["official-artwork"].front_default

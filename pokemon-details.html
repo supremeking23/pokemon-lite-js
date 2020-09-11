@@ -1,13 +1,328 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="./assets/styles/styles.css" />
+    <link rel="stylesheet" href="./assets/styles/pokemon-detail.css" />
+    <title>Pokemon Lite</title>
+
+    <style>
+      .type-bg {
+        color: #ffffff;
+        padding: 5px;
+        border-radius: 20%;
+      }
+
+      .main-body {
+        background: #ffffff;
+        padding: 20px;
+      }
+    </style>
   </head>
   <body>
-    <div id="pokemon"></div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-nav">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Pokemon-lite</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html"
+                >Pokedex <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="catch-pokemon.html">Catch Pokemon</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- <div id="pokemon"></div> -->
+
+    <div class="container pt-5">
+      <section class="main-body">
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div id="pokemon" class="img-left d-flex justify-content-center">
+              <!-- <img src="assets/images/bulbasaur.jpg" alt="bulbasaur" /> -->
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="data-right">
+              <h1>Pokédex data</h1>
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <th>National №</th>
+                    <td class="national-id"></td>
+                  </tr>
+                  <tr>
+                    <th>Type</th>
+                    <td class="type-row"></td>
+                  </tr>
+                  <!-- <tr>
+              <th>Species</th>
+              <td>Seed Pokémon</td>
+            </tr> -->
+                  <tr>
+                    <th>Height</th>
+                    <td class="height"></td>
+                  </tr>
+                  <tr>
+                    <th>Weight</th>
+                    <td class="weight"></td>
+                  </tr>
+                  <tr>
+                    <th>Base experience</th>
+                    <td class="base-experience"></td>
+                  </tr>
+                  <tr>
+                    <th>Abilities</th>
+                    <td>
+                      <span class="primary-ability"></span>
+                      <br />
+                      <span class="hidden-ability"></span>
+                      <small>(hidden ability)</small>
+                    </td>
+                  </tr>
+
+                  <!-- <tr>
+              <th>Local №</th>
+              <td>
+                001 <small>(Red/Blue/Yellow)</small> <br />
+                226 <small>(Gold/Silver/Crystal)</small> <br />
+                001 <small>(FireRed/LeafGreen)</small> <br />
+                231 <small>(HeartGold/SoulSilver)</small> <br />
+                080 <small>(X/Y — Central Kalos)</small> <br />
+                001 <small>(Let's Go Pikachu/Let's Go Eevee)</small> <br />
+                068 <small>(The Isle of Armor)</small>
+              </td>
+            </tr> -->
+                </tbody>
+              </table>
+              <hr />
+            </div>
+          </div>
+        </div>
+
+        <div class="base-stats-section mt-5">
+          <div class="row">
+            <div class="col col-12">
+              <h2>Base stats</h2>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col col-12 col-md-12 col-lg-12">
+              <table class="table">
+                <tbody class="stats-body">
+                  <!-- <tr>
+                <td class="details text-right">HP</td>
+                <td class="hp-base-stat">45</td>
+                <td width="75%">
+                  <div class="progress">
+                    <div
+                      class="progress-bar bg-danger"
+                      role="progressbar"
+                      style="width: 45%"
+                      aria-valuenow="45"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
+                  </div>
+                </td>
+              </tr> -->
+
+                  <!-- <tr>
+                <td class="details text-right">Attack</td>
+                <td>49</td>
+                <td width="75%">
+                  <div class="progress">
+                    <div
+                      class="progress-bar bg-danger"
+                      role="progressbar"
+                      style="width: 49%"
+                      aria-valuenow="49"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="details text-right">Defense</td>
+                <td>49</td>
+                <td width="75%">
+                  <div class="progress">
+                    <div
+                      class="progress-bar bg-danger"
+                      role="progressbar"
+                      style="width: 49%"
+                      aria-valuenow="49"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="details text-right">Sp. Atk</td>
+                <td>49</td>
+                <td width="75%">
+                  <div class="progress">
+                    <div
+                      class="progress-bar bg-warning"
+                      role="progressbar"
+                      style="width: 65%"
+                      aria-valuenow="65"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="details text-right">Sp. Def</td>
+                <td>65</td>
+                <td width="75%">
+                  <div class="progress">
+                    <div
+                      class="progress-bar bg-warning"
+                      role="progressbar"
+                      style="width: 65%"
+                      aria-valuenow="65"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="details text-right">Speed</td>
+                <td>45</td>
+                <td width="75%">
+                  <div class="progress">
+                    <div
+                      class="progress-bar bg-danger"
+                      role="progressbar"
+                      style="width: 45%"
+                      aria-valuenow="45"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
+                  </div>
+                </td>
+              </tr> -->
+
+                  <!-- <tr>
+                <td class="details text-right">Total</td>
+                <td><b>318</b></td>
+                <td width="50%"></td>
+              </tr> -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="move-sets-section mt-5">
+          <div class="row">
+            <div class="col col-12 col-lg-3 col-md-3">
+              <h2>Move sets</h2>
+              <table class="table">
+                <tbody class="move-set-table"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- <section class="float-buttons">
+        <nav class="float-action-button">
+        
+          <a
+            href="./catch-pokemon.html"
+            class="buttons"
+            title="Catch Pokemon"
+            data-toggle="tooltip"
+            data-placement="left"
+          >
+            <i class="fa fa-archive"></i>
+          </a>
+          <a
+            href="./index.html"
+            class="buttons"
+            title="Go to National Pokedex"
+            data-toggle="tooltip"
+            data-placement="left"
+          >
+            <i class="fa fa-list fa-xm"></i>
+          </a>
+          <a
+            href="#"
+            class="buttons main-button"
+            title="Navigation"
+            data-toggle="tooltip"
+            data-placement="left"
+            style="padding-left: 15px"
+          >
+            <i class="fa fa-times"></i>
+            <i class="fa fa-info fa-xm"></i>
+          </a>
+        </nav>
+      </section> -->
+      </section>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
+      //variables
+      const nationalId = document.querySelector(".national-id");
+      const pokemonType = document.querySelector(".type-row");
+      const pokemonHeight = document.querySelector(".height");
+      const pokemonWeight = document.querySelector(".weight");
+      const primaryAbility = document.querySelector(".primary-ability");
+      const hiddenAbility = document.querySelector(".hidden-ability");
+      const statsTable = document.querySelector(".stats-body");
+      const baseExperience = document.querySelector(".base-experience");
+      const moveSetTable = document.querySelector(".move-set-table");
+
+      function capitalize(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+      }
+
       const getAllPokemon = async (url) => {
         const data = await fetch(url);
         const json_data = await data.json();
@@ -18,6 +333,14 @@
         const data = await fetch(url);
         const json_data = await data.json();
         return json_data;
+      };
+
+      const getStats = async (stats) => {
+        return await Promise.all(
+          stats.map((stat) => {
+            return stat.base_stat;
+          })
+        );
       };
 
       // async function load(getPokemonURL) {
@@ -38,12 +361,180 @@
         await loadDetail(response);
       };
 
+      const getType = async (types) => {
+        return await Promise.all(
+          types.map((t) => {
+            return t.type.name;
+          })
+        );
+      };
+
+      const getAbility = async (abilities) => {
+        return await Promise.all(
+          abilities.map((ability) => {
+            return ability.ability.name;
+          })
+        );
+      };
+
       const loadDetail = async (data) => {
         let detail = await data;
-        //console.log(detail);
+        let [type1, type2] = await getType(detail.types);
+        let [ability1, ability2] = await getAbility(detail.abilities);
+
+        if (type1 == "fire") {
+          bgtype1 = "#FF6144";
+        } else if (type1 == "water") {
+          bgtype1 = "#66CCFF";
+        } else if (type1 == "grass") {
+          bgtype1 = "#8CD36A";
+        } else if (type1 == "flying") {
+          bgtype1 = "#66CCFF";
+        } else if (type1 == "poison") {
+          bgtype1 = "#EE99EE";
+        } else if (type1 == "bug") {
+          bgtype1 = "#8CD750";
+        } else if (type1 == "normal") {
+          bgtype1 = "#B7B6A4";
+        } else if (type1 == "dark") {
+          bgtype1 = "#8C6F61";
+        } else if (type1 == "psychic") {
+          bgtype1 = "#FF5599";
+        } else if (type1 == "electric") {
+          bgtype1 = "#FFDD57";
+        } else if (type1 == "rock") {
+          bgtype1 = "#BBAA66";
+        } else if (type1 == "ground") {
+          bgtype1 = "#DDBB55";
+        } else if (type1 == "fighting") {
+          bgtype1 = "#C56F61";
+        } else if (type1 == "ghost") {
+          bgtype1 = "#7D7DC5";
+        } else if (type1 == "ice") {
+          bgtype1 = "#7DD4FF";
+        } else if (type1 == "steel") {
+          bgtype1 = "#B7B7C5";
+        } else if (type1 == "dragon") {
+          bgtype1 = "#8C7DF1";
+        } else if (type1 == "fairy") {
+          bgtype1 = "#F1A9F1";
+        }
+
+        //type 2
+
+        if (type2 == "fire") {
+          bgtype2 = "#FF6144";
+        } else if (type2 == "water") {
+          bgtype2 = "#66CCFF";
+        } else if (type2 == "grass") {
+          bgtype2 = "#8CD36A";
+        } else if (type2 == "flying") {
+          bgtype2 = "#8899FF";
+        } else if (type2 == "poison") {
+          bgtype2 = "#EE99EE";
+        } else if (type2 == "bug") {
+          bgtype2 = "#8CD750";
+        } else if (type2 == "normal") {
+          bgtype2 = "#B7B6A4";
+        } else if (type2 == "dark") {
+          bgtype2 = "#8C6F61";
+        } else if (type2 == "psychic") {
+          bgtype2 = "#FF5599";
+        } else if (type2 == "electric") {
+          bgtype2 = "#FFDD57";
+        } else if (type2 == "rock") {
+          bgtype2 = "#BBAA66";
+        } else if (type2 == "ground") {
+          bgtype2 = "#DDBB55";
+        } else if (type2 == "fighting") {
+          bgtype2 = "#C56F61";
+        } else if (type2 == "ghost") {
+          bgtype2 = "#7D7DC5";
+        } else if (type2 == "ice") {
+          bgtype2 = "#7DD4FF";
+        } else if (type2 == "steel") {
+          bgtype2 = "#B7B7C5";
+        } else if (type2 == "dragon") {
+          bgtype2 = "#8C7DF1";
+        } else if (type2 == "fairy") {
+          bgtype2 = "#F1A9F1";
+        }
+
+        // let [hp, attack] = await getStats(detail.stats);
+        console.log(detail);
         document.querySelector(
           "#pokemon"
-        ).innerHTML += `<img src="${detail.sprites.other["official-artwork"].front_default}">`;
+        ).innerHTML += `<img class="img-fluid" src="${detail.sprites.other["official-artwork"].front_default}">`;
+
+        nationalId.innerHTML = `<strong>#${detail.id
+          .toString()
+          .padStart(3, "0")}</strong>`;
+
+        pokemonType.innerHTML = `<span class="type-bg" style="background: ${bgtype1}">${capitalize(
+          type1
+        )}</span> ${
+          type2
+            ? `<span class="type-bg" style="background:${bgtype2}">${capitalize(
+                type2
+              )}</span>`
+            : ""
+        }`;
+        //type2 ? '<span class="type">${capitalize(type2)}</span>' : ""
+        pokemonHeight.innerHTML = `${detail.height} meters`;
+        pokemonWeight.innerHTML = `${detail.weight} grams`;
+        primaryAbility.innerHTML = `${capitalize(ability1)}`;
+        hiddenAbility.innerHTML = `${capitalize(ability2)}`;
+        baseExperience.innerHTML = `${detail.base_experience}`;
+
+        detail.stats.forEach((stat) => {
+          console.log(stat.stat.name);
+        });
+
+        let base_stat_summary = detail.stats.map((stat) => {
+          let bg = "";
+          if (stat.base_stat < 50) {
+            bg = "bg-danger";
+          } else if (stat.base_stat >= 51 && stat.base_stat <= 80) {
+            bg = "bg-warning";
+          } else if (stat.base_stat >= 81) {
+            bg = "bg-success";
+          }
+          let data = `
+          <tr>
+                  <td class="details text-right">${capitalize(
+                    stat.stat.name
+                  )}</td>
+                  <td class="hp-base-stat">${stat.base_stat}</td>
+                  <td width="75%">
+                    <div class="progress ">
+                      <div
+                        class="progress-bar progress-bar-striped progress-bar-animated ${bg}"
+                        role="progressbar"
+                        style="width: ${stat.base_stat}%"
+                        aria-valuenow="${stat.base_stat}"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                  </td>
+          </tr>`;
+
+          return data;
+        });
+
+        statsTable.innerHTML += base_stat_summary.join("");
+
+        let move_set_list = detail.moves.map((move) => {
+          let move_set = `
+              <tr>
+                <td>${move.move.name}</td>
+              </tr>
+          `;
+
+          return move_set;
+        });
+
+        moveSetTable.innerHTML += move_set_list.join("");
       };
 
       // async function loadDetail(getPokemonURL) {
@@ -68,6 +559,14 @@
         fetchData();
         //loadDetail(pokemonURL);
       };
+
+      // call bootstrap tooltip
+      // $(function () {
+      //   $("body").tooltip({
+      //     selector: '[data-toggle="tooltip"]',
+      //     container: "body",
+      //   });
+      // });
     </script>
   </body>
 </html>

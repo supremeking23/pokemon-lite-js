@@ -1,0 +1,111 @@
+.type {
+  color: #ffffff;
+  padding: 5px;
+  border-radius: 20%;
+}
+
+.main-body {
+  background-color: #ffffff;
+  background-image: url("https://www.transparenttextures.com/patterns/gplay.png");
+}
+
+/* nav.float-action-button {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 1em;
+}
+
+a.buttons {
+  box-shadow: 0 5px 11px -2px rgba(0, 0, 0, 0.18),
+    0 4px 12px -7px rgba(0, 0, 0, 0.15);
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  color: #fff;
+  font-size: 2.6em;
+  padding: 1px 0 0 0;
+  text-align: center;
+  display: block;
+  margin: 20px auto 0;
+  position: relative;
+  -webkit-transition: all 0.1s ease-out;
+  transition: all 0.1s ease-out;
+}
+
+a.buttons:active,
+a.buttons:focus,
+a.buttons:hover {
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
+  text-decoration: none;
+}
+
+a.buttons:not(:last-child) {
+  width: 40px;
+  height: 40px;
+  margin: 20px auto 0;
+  opacity: 0;
+  font-size: 1.6em;
+  padding-top: 4px;
+  -webkit-transform: translateY(50px);
+  -ms-transform: translateY(50px);
+  transform: translateY(50px);
+}
+
+a.buttons.main-button > i:first-child {
+  position: relative;
+  margin-top: 10px;
+}
+nav.float-action-button:hover a.buttons:not(:last-child) {
+  opacity: 1;
+  -webkit-transform: none;
+  -ms-transform: none;
+  transform: none;
+  margin: 20px auto 0;
+}
+
+a.buttons:nth-last-child(1) {
+  -webkit-transition-delay: 25ms;
+  transition-delay: 25ms;
+  background-color: #17a2b8;
+}
+
+a.buttons:nth-last-child(1) i.fa {
+  transform: rotate3d(0, 0, 1, 0);
+  transition: content 0.4s, transform 0.4s, opacity 0.4s;
+}
+
+a.buttons:nth-last-child(1):hover i.fa {
+  transform: rotate3d(0, 0, 1, -180deg);
+
+  margin-right: 20px;
+}
+
+a.buttons:nth-last-child(1) i.fa:nth-last-child(1) {
+  position: absolute;
+  margin: 10px 0 0 -32px;
+}
+
+a.buttons:nth-last-child(1) i.fa:nth-last-child(2) {
+  opacity: 0;
+}
+
+a.buttons:nth-last-child(1):hover i.fa:nth-last-child(1) {
+  opacity: 0;
+}
+
+a.buttons:nth-last-child(1):hover i.fa:nth-last-child(2) {
+  opacity: 1;
+}
+
+a.buttons:not(:last-child):nth-last-child(2) {
+  -webkit-transition-delay: 50ms;
+  transition-delay: 20ms;
+  background-color: #e0a800;
+}
+
+a.buttons:not(:last-child):nth-last-child(3) {
+  -webkit-transition-delay: 75ms;
+  transition-delay: 40ms;
+  background-color: #1da1f2;
+} */

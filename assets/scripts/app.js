@@ -198,7 +198,7 @@ const loadPokemon = async (data) => {
       let data = `
               <div class="col mb-4">
               <div class="card">
-              <div id="poke-container" class="d-flex flex-column align-items-center justify-content-center pokemon-img-container ripple" style="background:${bg}">
+              <div id="poke-container" class="d-flex flex-column align-items-center justify-content-center pokemon-img-container ripple" style="background:${bg};border-top-left-radius:20px;border-top-right-radius:20px">
               ${
                 hasPokemon
                   ? '<div class="pokeball-is-caught d-flex justify-content-end" style=""><img class="isCaught mr-1" src="./assets/images/pokeball-open.png" ></div>'

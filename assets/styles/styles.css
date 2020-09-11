@@ -15,7 +15,7 @@ font-family: 'Fira Sans Extra Condensed', sans-serif; */
 }
 
 body {
-  background-color: #ffffff;
+  background-color: #555;
   background-image: url("https://www.transparenttextures.com/patterns/gplay.png");
 }
 
@@ -111,7 +111,7 @@ h6 {
 }
 
 .type {
-  background: red;
+  /* background: red; */
   color: #ffffff;
   padding: 5px;
   border-radius: 20%;
