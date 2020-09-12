@@ -281,8 +281,8 @@ const loadDetail = async (data) => {
           <td><span class="type" style="background:${bgmove}">${capitalize(
         moveDetail.type.name
       )}</span></td>
-          <td>${moveDetail.accuracy ? moveDetail.accuracy : "N/A"}</td>
-          <td>${moveDetail.power ? moveDetail.power : "N/A"}</td>
+          <td>${moveDetail.accuracy ? moveDetail.accuracy : "--"}</td>
+          <td>${moveDetail.power ? moveDetail.power : "--"}</td>
           <td>${moveDetail.pp}</td>
         </tr>
     `;
