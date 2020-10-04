@@ -28,7 +28,7 @@ Solar System View uses a number of technology to work properly:
 
 ## Developer
 * Ivan Christian Jay E. Funcion
-* Harold Nocus
+* Harold Nocos
 
 ## Screenshots
 
