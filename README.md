@@ -18,7 +18,7 @@ __Pokemon Lite__ is based on __*Pokemon TV Series and Pokemon Games*__
 
 ## Tech 
 
-Solar System View uses a number of technology to work properly:
+Pokemon Lite View uses a number of technology to work properly:
 
 * HTML5
 * CSS3
